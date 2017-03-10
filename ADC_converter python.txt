@@ -1,0 +1,34 @@
+import Adafruit_BBIO.ADC as ADC
+import time
+
+from time import sleep
+
+ADC.setup()
+
+max = FIGURE OUT
+pin = "P9_39"
+first = True
+last = False
+read = False
+
+while (1):
+	volt = ADC.read(pin) * 1.8
+	sleep(0.001)
+
+	if (volt > max and first == True and read == False):
+		start = time.time()
+		first = False
+		last = True
+		read = True
+
+	if (volt < max):
+		read = False
+	
+	if (volt > max and last == True and read == False):
+		end = time.time()
+		first = True
+		last = False
+		read = True
+		diff = (end - start)
+		BPM = 60 / diff
+		print "BMP: ", BMP
